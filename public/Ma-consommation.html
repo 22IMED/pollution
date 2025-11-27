@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    
+  <style>
+    /* ------------------------------
+   STYLE GLOBAL
+--------------------------------*/
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background: #f0f2f5;
+  margin: 0;
+  padding: 20px;
+  color: #2d3436;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 95%;
+  max-width: 750px;
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* ------------------------------
+   TITRES
+--------------------------------*/
+h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #0984e3;
+}
+
+h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  margin-top: 18px;
+  font-weight: 600;
+}
+
+/* ------------------------------
+   FORMULAIRES & LABELS
+--------------------------------*/
+label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  transform: scale(1.2);
+  accent-color: #0984e3;
+}
+
+input[type="text"] {
+  width: 200px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+/* ------------------------------
+   BOUTONS
+--------------------------------*/
+a {
+  text-decoration: none;
+}
+
+button {
+  background: #0984e3;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.25s;
+  min-width: 130px;
+}
+
+button:hover {
+  background: #0770c8;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+/* ------------------------------
+   TEXTE "Nom de votre équipe"
+--------------------------------*/
+#equipe {
+  font-weight: bold;
+  color: #00b894;
+}
+
+/* ------------------------------
+   RESPONSIVE
+--------------------------------*/
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  label {
+    font-size: 15px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+  </style>
+  </head>
+  <body>
+    <div class="container">
+    <label>Nom de votre équipe: <span id="equipe"></span></label>
+    <!-- Je veux faire apparaitre le nom de l'équipe qui a été selection dans la page bilan carbone -->
+    
+    <h1>MA CONSOMMATION</h1>
+    <h3>
+      <i
+        >Nous allons ici te poser quelques questions sur tes habitudes de
+        consommation
+      </i>
+    </h3>
+    <h3>Choisissez votre mode de transport quotidien :</h3>
+
+    <label>
+      <input type="radio" name="transport" value="Produit A" />
+      Voiture</label
+    ><br />
+    <label>
+      <input type="radio" name="transport" value="Produit A" />
+      Transport en commun</label
+    ><br />
+    <label>
+      <input type="radio" name="transport" value="Produit A" />
+      A pied/velo</label
+    ><br />
+    <!-- Ici, si le client selectionne véhicule la section suivante apparait, si non nous passons a la question suivante -->
+    <h4>Choisissez votre type de véhicule :</h4>
+    <label><input type="radio" name="Carburant" value="1" /> Essence</label><br />
+    <label><input type="radio" name="Carburant" value="2" /> Diesel</label><br />
+    <label><input type="radio" name="Carburant" value="3" /> Electrique</label>><br />
+    <br>
+    <h4>Combien de km par jours :</h4>
+    <label></label>
+    <input type="text" id="KM" name="KM">Km journalier</label>
+
+     <h3>Mes jours de télé-travail :</h3>
+      <label><input type="checkbox" name="jours" value="lundi"> Lundi</label>
+      <label><input type="checkbox" name="jours" value="mardi"> Mardi</label>
+      <label><input type="checkbox" name="jours" value="mercredi"> Mercredi</label>
+      <label><input type="checkbox" name="jours" value="jeudi"> Jeudi</label>
+      <label><input type="checkbox" name="jours" value="vendredi"> Vendredi</label>
+    
+    <h3>Mes repas :</h3>
+    <!-- seuls seront proposés les jours qui ne sont pas selectionner en télétravail-->
+      <h4><label>Lundi</label></h4>
+      <label><input type="checkbox" name="Vege" value="Vege"> Vegetarien</label>
+      <label><input type="checkbox" name="Viande" value="viande"> Viande</label>
+     <h4><label>Mardi</label></h4>
+      <label><input type="checkbox" name="Vege" value="Vege"> Vegetarien</label>
+      <label><input type="checkbox" name="Viande" value="viande"> Viande</label>
+      <h4><label>Mercredi</label></h4> 
+      <label><input type="checkbox" name="Vege" value="Vege"> Vegetarien</label>
+      <label><input type="checkbox" name="Viande" value="viande"> Viande</label>
+      <h4><label>Jeudi</label></h4>
+      <label><input type="checkbox" name="Vege" value="Vege"> Vegetarien</label>
+      <label><input type="checkbox" name="Viande" value="viande"> Viande</label>
+      <h4><label>Vendredi</label></h4>
+      <label><input type="checkbox" name="Vege" value="Vege"> Vegetarien</label>
+      <label><input type="checkbox" name="Viande" value="viande"> Viande</label>
+      
+    </br>
+    <a href="index.html"><button>Précédent</button></a>
+    <a href="Mon-resultat.html"><button>Suivant</button></a>
+    </div>
+  </body>
+</html>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { 
+  getFirestore, collection, doc,
+  addDoc, setDoc, updateDoc, deleteDoc,
+  getDoc, getDocs, query, where, orderBy, limit 
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCMUS_54CqdiIlKMKNwA0LDyAkX6_NWiH0",
+  authDomain: "norauto-pollution.firebaseapp.com",
+  projectId: "norauto-pollution",
+  storageBucket: "norauto-pollution.firebasestorage.app",
+  messagingSenderId: "816327884780",
+  appId: "1:816327884780:web:c6805bb90f73fef21b4ac9",
+  measurementId: "G-506NX4JCZH"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+async function addEquipe(equipeName, equipeData) {
+  try {
+    const docRef = await addDoc(collection(db, "equipes"), {
+      name: equipeName,
+      ...equipeData
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
+async function getEquipeData(equipeName) {
+  const equipesRef = collection(db, "equipes");
+  const q = query(equipesRef, where("name", "==", equipeName));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+  });
+}
+
+async function getEquipesList() {
+  const equipesRef = collection(db, "equipes");
+  const querySnapshot = await getDocs(equipesRef);
+  const equipes = [];
+  querySnapshot.forEach((doc) => {
+    equipes.push({ id: doc.id, ...doc.data() });
+  });
+  return equipes;
+}
+
+const equipes = await getEquipesList();
+const select = document.getElementById("equipe");
+
+equipes.forEach(equipe => {
+    const option = document.createElement("option");
+    option.value = equipe.id;   
+    option.textContent = equipe.nom;
+    select.appendChild(option);
+  });
+
+</script>

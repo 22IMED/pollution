@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link rel="stylesheet" href="style.css" />
+  
+  </head>
+  <body>
+     <div class="container">
+    <label>Nom de votre équipe</label>
+    <select id="equipe">
+      
+    </select>
+    <h1>PRODUITS</h1>
+    <h3>
+      <i
+        >Renseignez les informations de vos applications, vous trouverez toutes
+        ces données sur datadog</i>
+    </h3>
+    <button>Ajouter un produit</button><br />
+    <label>Nom du produit </label>
+    <select>
+      <option>TSF</option>
+      <option>WAM</option>
+    </select>
+    <table border="1">
+      <tr>
+        <th>Capacites</th>
+        <th>Valeur en KW/H</th>
+        <th>Co² emis</th>
+      </tr>
+      <tr>
+        <td>CPU</td>
+        <td><input type="text" name="CPU" placeholder="...KW/H" /></td>
+        <td><label>0</label></td>
+      </tr>
+      <tr>
+        <td>RAM</td>
+        <td><input type="text" name="RAM" placeholder="...KW/H" /></td>
+        <td><label>0</label></td>
+      </tr>
+      <tr>
+        <td>RESEAU</td>
+        <td><input type="text" name="Resau" placeholder="...KW/H" /></td>
+        <td><label>0</label></td>
+      </tr>
+    </table>
+    <h2>
+      <label>Total: <span id="selectionValue">0</span></label>
+    </h2>
+    <div v-for="X>5">
+      <button>Ajouter un produit</button><br />
+      <label>Nom du produit </label>
+      <select>
+        <option>TSF</option>
+        <option>WAM</option>
+      </select>
+      <table border="1">
+        <tr>
+          <th>Capacites</th>
+          <th>Valeur en KW/H</th>
+          <th>Co² emis</th>
+        </tr>
+        <tr>
+          <td>CPU</td>
+          <td><input type="text" name="CPU" placeholder="...KW/H" /></td>
+          <td><label>0</label></td>
+        </tr>
+        <tr>
+          <td>RAM</td>
+          <td><input type="text" name="RAM" placeholder="...KW/H" /></td>
+          <td><label>0</label></td>
+        </tr>
+        <tr>
+          <td>RESEAU</td>
+          <td><input type="text" name="Resau" placeholder="...KW/H" /></td>
+          <td><label>0</label></td>
+        </tr>
+      </table>
+      <h2>
+        <label>Total:<span id="selectionValue">0</span></label>
+      </h2>
+    </div>
+    <a href="Mes-outils.html"><button>Précédent</button></a>
+    <a href="Ma-consommation.html"><button>Suivant</button></a>
+  </div>
+  </body>
+</html>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { 
+  getFirestore, collection, doc,
+  addDoc, setDoc, updateDoc, deleteDoc,
+  getDoc, getDocs, query, where, orderBy, limit 
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCMUS_54CqdiIlKMKNwA0LDyAkX6_NWiH0",
+  authDomain: "norauto-pollution.firebaseapp.com",
+  projectId: "norauto-pollution",
+  storageBucket: "norauto-pollution.firebasestorage.app",
+  messagingSenderId: "816327884780",
+  appId: "1:816327884780:web:c6805bb90f73fef21b4ac9",
+  measurementId: "G-506NX4JCZH"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+async function addEquipe(equipeName, equipeData) {
+  try {
+    const docRef = await addDoc(collection(db, "equipes"), {
+      name: equipeName,
+      ...equipeData
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
+async function getEquipeData(equipeName) {
+  const equipesRef = collection(db, "equipes");
+  const q = query(equipesRef, where("name", "==", equipeName));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+  });
+}
+
+async function getEquipesList() {
+  const equipesRef = collection(db, "equipes");
+  const querySnapshot = await getDocs(equipesRef);
+  const equipes = [];
+  querySnapshot.forEach((doc) => {
+    equipes.push({ id: doc.id, ...doc.data() });
+  });
+  return equipes;
+}
+
+const equipes = await getEquipesList();
+const select = document.getElementById("equipe");
+
+  equipes.forEach(equipe => {
+    const option = document.createElement("option");
+    option.value = equipe.id;    // ou equipe.nom si tu veux
+    option.textContent = equipe.nom;
+    select.appendChild(option);
+  });
+
+</script>

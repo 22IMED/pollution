@@ -1,0 +1,125 @@
+/* ------------------------------
+   GLOBAL
+--------------------------------*/
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background: #eef2f7;
+  margin: 0;
+  padding: 0;
+  color: #2d3436;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 700px;
+  background: white;
+  margin: 25px 0;
+  padding: 25px 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* Titles */
+h1 {
+  text-align: center;
+  margin-top: 0;
+  color: #0984e3;
+}
+
+h3 {
+  margin-top: 30px;
+  color: #2d3436;
+}
+
+h4 {
+  margin-top: 18px;
+  font-weight: 600;
+}
+
+/* ------------------------------
+   FORM ELEMENTS
+--------------------------------*/
+label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  transform: scale(1.2);
+  accent-color: #0984e3;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+/* ------------------------------
+   BUTTONS
+--------------------------------*/
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+button {
+  background: #0984e3;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.25s;
+  min-width: 120px;
+}
+
+button:hover {
+  background: #0770c8;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ------------------------------
+   RESPONSIVE
+--------------------------------*/
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  button {
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  label {
+    font-size: 15px;
+  }
+}
+
+/* ------------------------------
+   CUSTOM TEXT (ex: équipe)
+--------------------------------*/
+#equipe {
+  color: #00b894;
+  font-weight: bold;
+}
