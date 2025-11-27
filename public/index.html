@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <link rel="stylesheet" href="style.css" />
   
   </head>
   <body>
@@ -18,10 +17,7 @@
     </h3>
     <button>Ajouter un produit</button><br />
     <label>Nom du produit </label>
-    <select>
-      <option>TSF</option>
-      <option>WAM</option>
-    </select>
+    <input type="text" name="produit" placeholder="Nom du produit" /><br />
     <table border="1">
       <tr>
         <th>Capacites</th>
@@ -133,7 +129,8 @@ async function getEquipesList() {
   const equipes = [];
   querySnapshot.forEach((doc) => {
     equipes.push({ id: doc.id, ...doc.data() });
-  });
+  }
+);
   return equipes;
 }
 
